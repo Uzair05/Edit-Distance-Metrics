@@ -1,12 +1,12 @@
+module HammingDistance(hammingDistance) where
+
+hmDist :: String -> String -> Int
+hmDist [] [] = 0
+hmDist (x:xs) (y:ys)    | x /= y    = 1 + hmDist xs ys
+                        | otherwise = 0 + hmDist xs ys
 
 hammingDistance:: String -> String -> Int
-hammingDistance _ [] = 0
-hammingDistance [] _ = 0
-hammingDistance (x:xs) (y:ys) = do
-                                    if length (x:xs) == length (y:ys) then
-                                        if x /= y then
-                                            1 + hammingDistance xs ys
-                                        else
-                                            0 + hammingDistance xs ys
-                                    else
-                                        0
+hammingDistance xs ys = if length xs == length ys then
+                            hmDist xs ys
+                        else
+                            -1 -- -1 if error
